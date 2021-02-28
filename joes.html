@@ -7,18 +7,23 @@
             #header{
                 text-align: center;
                 margin: auto;
-                font-style: "Georgia";
+                line-height: 1.5;
             }
             #s{
                 column-count: 2;
-                font-style: "Georgia";
                 font-size: 30px;
+            }
+            #body{
+                background-color: #ebf0fa;
             }
         </style>
     </head>
     
-    <body>
-        <h1 id = header>Joe's Hotdogs Order Summary</h1>
+    <body id = "body">
+        <hr>
+        <h1 id = header>Joe's Hotdogs</h1>
+        <hr>
+        <h2 id = header2>Order Summary:</h2>
         <div id="s">
         <script language="javascript">
             hotdogs = prompt("Welcome to Joe's Hotdogs! How many hotdogs would you like?", "");
@@ -30,7 +35,7 @@
             document.write("Number of Hotdogs: " + hotdogs + "<br>" + 
                            "Number of French Fries: " + fries + "<br>" + 
                            "Number of Sodas: " + sodas + "<br>");
-            document.write("Subtotal: " + before_special + "<br>");
+            document.write("Subtotal: $" + before_special + "<br>");
 
             //joe's special
             if(subtotal >= 20){
@@ -38,7 +43,7 @@
                 subtotal = subtotal*0.9;
                 //round to 2 decimal places
                 subtotal = Math.round(subtotal*100)/100;
-                document.write("Congratulations! You qualify for Joe's Special." + "<br>" + "New Subtotal (-10%): " + subtotal + "<br>");
+                document.write("Congratulations! You qualify for Joe's Special." + "<br>" + "New Subtotal (-10%): $" + subtotal + "<br>");
             }
             
             before_tax = subtotal;
@@ -48,7 +53,7 @@
             subtotal += tax;
             subtotal = Math.round(subtotal*100)/100;
             
-            document.write("After tax (6.25%): " + subtotal);
+            document.write("After tax (+6.25%): $" + subtotal);
             
             
         </script>
