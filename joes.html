@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Joe's Hotdogs</title>
+        <style type="text/css">
+            #header{
+                text-align: center;
+                margin: auto;
+                font-style: "Georgia";
+            }
+            #s{
+                column-count: 2;
+                font-style: "Georgia";
+            }
+        </style>
+    </head>
+    
+    <body>
+        <h1 id = header>Joe's Hotdogs Order Summary</h1>
+        <div id="s">
+        <script language="javascript">
+            hotdogs = prompt("Welcome to Joe's Hotdogs! How many hotdogs would you like?", "");
+            fries = prompt("How many french fries would you like?", "");
+            sodas = prompt("How many sodas would you like?", "");
+            
+            subtotal = (hotdogs*3.25)+(fries*2)+(sodas*1.5);
+            before_special = subtotal; 
+            document.write("Number of Hotdogs: " + hotdogs + "<br>" + 
+                           "Number of French Fries: " + fries + "<br>" + 
+                           "Number of Sodas: " + sodas + "<br>");
+            document.write("Subtotal: " + before_special + "<br>");
+
+            //joe's special
+            if(subtotal >= 20){
+                //take 10% off of the total
+                subtotal = subtotal*0.9;
+                //round to 2 decimal places
+                subtotal = Math.round(subtotal*100)/100;
+                document.write("Congratulations! You qualify for Joe's Special." + "<br>" + "New Subtotal (-10%): " + subtotal + "<br>");
+            }
+            
+            before_tax = subtotal;
+            
+            //massachusetts tax
+            tax = subtotal*0.065;
+            subtotal += tax;
+            subtotal = Math.round(subtotal*100)/100;
+            
+            document.write("After tax (6.25%): " + subtotal);
+            
+            
+        </script>
+        </div>
+    </body>
+</html>
