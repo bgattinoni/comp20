@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Amicable Numbers</title>
+		<style type="text/css">
+			#header{
+				text-align: center;
+				margin: auto;
+				line-height: 2;
+			}
+			#output{
+				line-height: 3;
+			}
+			#body{
+				background-color: #fff7dc;
+				text-align: center;
+				font-family: system-ui, sans-serif;
+				font-size: 120%;
+			}
+		</style>
+		<script language="javascript">
+		function findAmicable()
+			{
+				a = parseInt(document.getElementById("first").value);
+				b = parseInt(document.getElementById("second").value);
+				
+				//find factors of each number, put into arrays
+				var a_facs = findFactors(a);
+				var b_facs = findFactors(b);
+				
+				//alert with factors
+				var a_string = a_facs.toString(); 
+				var b_string = b_facs.toString();
+				alert("Factors of first number: " + a_string + 
+					  "\nFactors of second number: " + b_string);
+					  
+				//sum both factor arrays
+				if((sum(a_facs) == b) && (sum(b_facs) == a)){
+					document.getElementById("output").innerHTML = 
+							"The numbers: " + a + " and " + b + " are amicable";
+				}
+				else{
+					document.getElementById("output").innerHTML = 
+							"The numbers: " + a + " and " + b + " are not amicable";
+				}
+				
+			}
+		function findFactors(a){
+			var a_factors = [];
+			for(i = 1; i < a; i++){
+				if(isAFactor(i,a)){
+					a_factors.push(i);
+				}
+			}
+			return a_factors;
+		}
+		function isAFactor(x,y)
+			{
+				if(y%x == 0)
+					return true;
+				else
+					return false;
+			}
+		function sum(x)
+			{
+				var sumOfX = 0;
+				for(i = 0; i < x.length; i++){
+					sumOfX+=x[i];
+				}
+				return sumOfX;
+			}
+		</script>
+	</head>
+
+<body id = body>
+	<h1 id = header>Amicable Numbers</h1>
+	<form id = form>
+	Enter a number:  <input type="text" id="first"> <br><br>
+	Enter a second number: <input type="text" id="second"> <br><br>
+	<input type= "button" value = "Submit" onclick="findAmicable()">
+	</form>
+	<div id=output></div>
+</body>
+</html>
