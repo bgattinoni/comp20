@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Jump Button Challenge</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		#main-header{
+			text-align:center;
+			background-color:#000080;
+			color:white;
+			padding:5px;
+		}
+		#headers{
+			background-color:#d9e7ff;
+			padding:15px;
+			text-align:center;
+			color:#060a8c;
+		}
+		#body{
+			text-align:center;
+			font-size: 40px;
+		}
+		/* #myButton{} */
+		/* #first{}
+		#second{} */
+	</style>
+	<script language="javascript">
+	function toggle(){
+		//switch button's text 
+		var elem = document.getElementById('myButton');
+		var first = document.getElementById('first');
+		var second = document.getElementById('second');
+    	if (elem.value=="JUMP >"){
+			elem.value = "< JUMP";
+			second.value = first.value;
+		}
+    	else{
+			elem.value = "JUMP >";
+			first.value= second.value;
+		}
+
+	}	
+	</script>
+</head>
+<body>
+	<header id="main-header">
+		<h2>Jump Button Challenge</h2>
+	</header>
+
+	<form id="body">
+		<br/>
+		<input type 'text' value = '' id='first'>
+		<input type ='button' value = 'JUMP >' onclick = 'toggle()' id='myButton'>
+		<input type 'text' value = '' id='second'><br/>
+		
+	</form>
+
+</body>
+</html>

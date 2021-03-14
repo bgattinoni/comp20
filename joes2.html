@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Joe's Hotdogs</title>
+        <style type="text/css">
+            #header{
+                text-align: center;
+                margin: auto;
+                line-height: 1.5;
+            }
+            #s{
+                column-count: 2;
+                font-size: 30px;
+            }
+            #body{
+                background-color: #ebf0fa;
+                text-align: center;
+            }
+            .errMsg{
+                color: #D20E11; 
+                border: solid 1px #d20e11; 
+                display:none;  
+                padding: 1px 15px;	
+            }
+        </style>
+    </head>
+    
+    <body id = "body">
+        <!-- Header -->
+        <hr>
+        <h1 id = header>Joe's Hotdogs</h1>
+        <hr>
+        
+        <!-- Order form with drop down quantities -->
+        <form onsubmit="return validate()" name="data">
+        Hotdogs, $3.25 
+        <select id="hotdogs">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select><br/><br/>
+        French Fries, $2.00
+        <select id="fries">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select><br/><br/>
+        Sodas, $1.50
+        <select id="sodas">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+        </select><br/><br/>
+        <div id="error" class="errMsg">Must Order an Item</div><br /><br />
+        
+        <button type="submit" value="Submit">Tally Order</button>
+        </form>
+        
+        <div id="s">
+        <script language="javascript">
+            //validate fuction, calls calculate if input is valid
+            function validate(){
+        		err=false;
+        		document.getElementById("error").style.display = "none";
+        		with (document.data)
+        		{
+        			if (document.getElementById("hotdogs").value=="0" && document.getElementById("fries").value=="0" && document.getElementById("sodas").value=="0")
+        			{
+        				document.getElementById("error").style.display = "inline-block";
+        				//document.getElementById("sodas").value.focus();
+        				err=true;
+        			}
+                    else{
+                        calculate();
+                    }
+        		}
+        		return !err;
+        	}
+            //performs actual calculations, created new window
+            function calculate(){
+                var newWindow = window.open("","Test","width=600,height=600,scrollbars=1,resizable=1")
+                
+                hotdogs = document.getElementById("hotdogs").value;
+                fries = document.getElementById("fries").value;
+                sodas = document.getElementById("sodas").value;
+                
+                subtotal = (hotdogs*3.25)+(fries*2)+(sodas*1.5);
+                before_special = subtotal; 
+                var html = "<html><head></head><body>Number of Hotdogs: " + hotdogs + "<br>" + 
+                               "Number of French Fries: " + fries + "<br>" + 
+                               "Number of Sodas: " + sodas + "<br>";
+                html += "Subtotal: $" + before_special + "<br>";
+                
+
+                //joe's special
+                if(subtotal >= 20){
+                    //take 10% off of the total
+                    subtotal = subtotal*0.9;
+                    //round to 2 decimal places
+                    subtotal = Math.round(subtotal*100)/100;
+                    html += "Congratulations! You qualify for Joe's Special." + "<br>" + "New Subtotal (-10%): $" + subtotal + "<br>";
+                }
+                
+                before_tax = subtotal;
+                
+                //massachusetts tax
+                tax = subtotal*0.065;
+                subtotal += tax;
+                subtotal = Math.round(subtotal*100)/100;
+                
+                html += "After tax (+6.25%): $" + subtotal;
+                
+                newWindow .document.open()
+                newWindow .document.write(html)
+                newWindow .document.close()
+            }
+            
+        </script>
+        </div>
+    </body>
+</html>
