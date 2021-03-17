@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+        <title>Featured Artist</title>
+        <link rel='stylesheet' type="text/css" href="style.css" />
+        <style type="text/css">
+            /* #header{
+                text-align: center;
+                margin: auto;
+                font-size:90px;
+                /* border: 100px; */
+            
+            #section-header{
+                text-align: center;
+                margin: auto;
+                /* border: 100px; */
+                font-size: 30px;
+                line-height: 1.5;
+            }
+            #name{
+                text-align: center;
+                margin: auto;
+                font-size:60px;
+                /* border: 100px; */
+            }
+            #image{
+                width: 150px;
+                height: 150px;
+            }
+            #content{
+                /* margin: 5px 5px 50px 50px; */
+                margin: 1% 18% 0% 18%;
+                column-count: 1;
+                font-size: 20px;
+            }
+            #body{
+                background-color: #ffffff;
+            }
+            #gallery{
+                text-align: center;
+            }
+            .mySlides{
+                display:block;
+                width: 350px;
+                height:250px;
+                margin: 1% 37.5% 1% 37.5%;
+            }
+        </style>
+    </head>
+    
+    <body>
+
+      <!-- header section -->
+              <div id='header'>
+                <a href="index.html">
+                  <div>
+                    <img src="logo.png" alt="Bistro-Du-Solei Logo" class="logo">
+                  </div>
+                </a>
+                  <a href="menu.html">Menu</a>
+                  <a href="res.html">Reservations</a>
+                  <a href="order.html">Order</a>
+                  <a href="abt.html">About Us</a>
+                  <a class="selected" href="art.html">Featured Artists</a>
+                  <a href="catering.html">Catering</a>
+              </div>
+              
+              <br/>
+              <h1  id = "name"><img id=image style="vertical-align:middle" src="harrison.png" alt="Harrison Gordon" width=150px/>     Harrison Gordon</h1>
+              
+              <h2 id = section-header>Gallery Opening<br>Sunday, Feb. 23rd<br>4-7pm<br>
+                  BETWEEN WATER AND LAND</h2>
+            <div id="content">
+                As a 16-year-old, I have only begun my journey as a photographer. 
+                I am often discovering new attributes to my style and subjects to photograph. 
+                Currently I’m drawn to landscape, portrait, and aerial photography, with some 
+                wildlife, still life, and abstract here and there. For the most part, I used to 
+                take photos to “capture the moment” (and I took quite a lot), but now I 
+                have transitioned to a more professional, artistic mode of photography. 
+                Not only have I learned technical skills and composition, but more importantly, 
+                how to create a photo that moves people. I never settle for just “okay” — 
+                I am always working to take my pictures to the next level. As I isolate my 
+                interests and hone in on my skills and artistic style, I hope to advance my 
+                craft and become ever more engaged in the community. <br/>
+            </div>
+            
+            <div id="gallery">
+                <img class="mySlides" src="photo1.png">
+                <img class="mySlides" src="photo2.png">
+                <img class="mySlides" src="photo3.png">
+                
+                <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+            </div>
+            
+            <br/>
+            <h2 id = section-header>ABOUT HARRISON</h2>
+            <div id="content">
+                Harrison Gordon is an award-winning photographer and currently a junior in high school. 
+                He specializes in taking landscape, portrait, and aerial photography: offering personal 
+                and business photoshoots and aerial event coverage. <br/><br/>Most recently he endeavored 
+                to expand his portraiture collection and skills, offering family photoshoots throughout 
+                the holiday season. Prior to this, he took his landscape photography to the next level 
+                when he embarked on an expedition with National Geographic and one of their esteemed 
+                photographers, Ronan Donovan. They travelled to San Francisco and Yosemite National Park 
+                for two weeks of intense photographic challenges, where he was exposed to a multitude 
+                of methods and opportunities which drastically improved my skills. <br/><br/> His work has 
+                been awarded Best in Show in the Pequot Library Art Show 22 Under 22, and Best 
+                Landscape at the Westport Library. In addition, his art is on display as a 
+                full-restaurant gallery at Bistro du Soleil in Westport. He loves using his creativity 
+                to produce stunning photographs of places and people, especially for the benefit of the community. <br/><br/>
+            </div>
+            
+            <h2 id = section-header>CONTACT INFO</h2>
+            <div id="content" style="text-align:center;">
+                WEB: www.hgordonphoto.com<br/>
+                IG: @hgordon_photography<br/>
+                FB: @hgordonphotographer<br/>
+                EMAIL: harrison@hgordonphoto.com<br/><br/><br/><br/>
+                
+            </div>
+                  
+            <script>
+                  var slideIndex = 1;
+                  showDivs(slideIndex);
+
+                  function plusDivs(n) {
+                    showDivs(slideIndex += n);
+                  }
+
+                  function showDivs(n) {
+                    var i;
+                    var x = document.getElementsByClassName("mySlides");
+                    if (n > x.length) {slideIndex = 1}
+                    if (n < 1) {slideIndex = x.length}
+                    for (i = 0; i < x.length; i++) {
+                      x[i].style.display = "none";  
+                    }
+                    x[slideIndex-1].style.display = "block";  
+                  }
+              </script>
+
+    </body>
+
+  </html>
