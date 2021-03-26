@@ -17,8 +17,12 @@
 		text-align: center;
 		font-family: "Helvetica";
 		background-color: #ebedf0;
-		line-height: 3;
+	}
+	#jokepart1{
 		font-size: 25px;
+	}
+	#notes{
+		font-size: 15px;
 	}
 </style>
 </head>
@@ -71,9 +75,19 @@ function requestJoke(){
 <!-- BODY - where the joke will be. Calls requestJoke when it loads-->
 <body id = "body" onload="requestJoke()">
 	
-<h1 id="header">Joke API</h1>
+<h1 id="header">Joke Generator</h1>
+<br><br><br><br><br><br><br>
 <div id="jokepart1">
 	Joke Loading...
+</div>
+<div id="notes">
+<br><br><br><br><br><br><br>
+This is the JokeAPI that produces jokes accessible with the GET request. <br>
+The jokes are labeled with different tags, allowing for the creation of 
+a filter to remove insensitive jokes. <br><br>Information about the API can be found here: https://sv443.net/jokeapi/v2/. <br>
+I found this API through Mixed Analytics' list of free and open public APIs. <br><br>
+The API request options include: category, id, safe, and multiple flags. <br><br>
+This API could prove helpful in... <br>1: a website that is trying to keep children engaged, and <br>2: a website that is looking to keep their content fresh and lively.
 </div>
 
 
