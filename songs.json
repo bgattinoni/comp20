@@ -1,0 +1,62 @@
+[
+    {
+        "artist":["Oliver Tree"],
+        "title":"Cash Machine",
+        "genre":["Alternative"],
+        "year":2020
+    },
+    {
+        "artist":["Cavetown"],
+        "title":"Devil Town",
+        "genre":["Folk", "Pop"],
+        "year":2015
+    },
+    {
+        "artist":["Kevin Abstract"],
+        "title":"Empty",
+        "genre":["Alternative", "Hip Hop"],
+        "year":2016
+    },
+    {
+        "artist":["One Direction"],
+        "title":"Strong",
+        "genre":["Pop"],
+        "year":2013
+    },
+    {
+        "artist":["The Animals"],
+        "title":"House of the Rising Sun",
+        "genre":["Rock"],
+        "year":1966
+    },
+    {
+        "artist":["Daryl Hall", "John Oates"],
+        "title":"Rich Girl",
+        "genre":["Blue-eyed Soul"],
+        "year":1976
+    },
+    {
+        "artist":["Cage the Elephant"],
+        "title":"Telescope",
+        "genre":["Alternative"],
+        "year":2013
+    },
+    {
+        "artist":["Frank Ocean"],
+        "title":"White Ferrari",
+        "genre":["Neo Soul"],
+        "year":2016
+    },
+    {
+        "artist":["Dreamville", "JAD", "EARTHGANG", "Buddy", "Guapdad 4000"],
+        "title":"Wells Fargo",
+        "genre":["Hip Hop"],
+        "year":2020
+    },
+    {
+        "artist":["Caamp"],
+        "title":"By and By",
+        "genre":["Folk"],
+        "year":2019
+    }
+]
