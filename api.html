@@ -17,6 +17,8 @@
 		text-align: center;
 		font-family: "Helvetica";
 		background-color: #ebedf0;
+		line-height: 3;
+		font-size: 25px;
 	}
 </style>
 </head>
@@ -24,45 +26,46 @@
 <!-- SCRIPT BEGINS HERE -->
 <script>
 function requestJoke(){
-	alert("in request joke");
 	//CONSTRUCT
 	var reqJoke = new XMLHttpRequest();
 	if(!reqJoke){
 		alert("Unable to retrieve joke.");
 	}
-	data = "id:101";
-	
-	alert("about to open api");
 	//OPEN
-	reqJoke.open("POST", "https://v2.jokeapi.dev/joke/Any", true);
+	reqJoke.open("GET", "https://v2.jokeapi.dev/joke/Any", true);
 	
-	
-	alert("before onreadystatechange");
 	//EVENT HANDLER
-	reqJoke.onreadystatechange = getMyJoke();
-	
+	reqJoke.onreadystatechange = function(){
 
-	alert("about to send");
+		if(reqJoke.readyState==4  && reqJoke.status==200){
+			var data = reqJoke.responseText;
+			var info=JSON.parse(data);
+			var type=info.type;
+			var safe=info.type;
+			var joke;
+			if(type == "twopart"){
+				joke = "" + info.setup + "\n\n\n" + info.delivery;
+			}
+			else{
+				joke = info.joke;
+			}
+			if(info.safe==false){
+				
+				document.getElementById("jokepart1").innerHTML = "Sorry, the joke that loaded isn't labeled as safe. Please reload for a new joke!";
+			}
+			else{
+				document.getElementById("jokepart1").innerHTML = joke;
+			}
+		}
+		else{
+			document.getElementById("jokepart1").innerHTML = "Oops! Something is wrong.";
+		}
+	}
+	
 	//SEND
 	reqJoke.send();
 }
 
-//function getMyJoke
-function getMyJoke(){
-	alert("in getmyjoke");
-	if(this.readyState==4  && this.status==200){
-		var data = reqJoke.responseText;
-		alert("just got data");
-		alert(data);
-		var info=JSON.parse(data);
-		alert(info);
-		document.getElementById("jokepart1").innerHTML = info;
-		
-	}
-	else{
-		document.getElementById("jokepart1").innerHTML = "Oops! Something is wrong.";
-	}
-}
 </script>
 
 <!-- BODY - where the joke will be. Calls requestJoke when it loads-->
@@ -70,7 +73,7 @@ function getMyJoke(){
 	
 <h1 id="header">Joke API</h1>
 <div id="jokepart1">
-	JOKE HERE
+	Joke Loading...
 </div>
 
 
