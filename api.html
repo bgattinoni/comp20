@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Joke API</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- STYLE -->
+<style type="text/css">
+	#header{
+		text-align: center;
+		margin: auto;
+		line-height: 1.5;
+		font-family: "Helvetica";
+	}
+	#body{
+		text-align: center;
+		font-family: "Helvetica";
+		background-color: #ebedf0;
+	}
+</style>
+</head>
+
+<!-- SCRIPT BEGINS HERE -->
+<script>
+function requestJoke(){
+	alert("in request joke");
+	//CONSTRUCT
+	var reqJoke = new XMLHttpRequest();
+	if(!reqJoke){
+		alert("Unable to retrieve joke.");
+	}
+	data = "id:101";
+	
+	alert("about to open api");
+	//OPEN
+	reqJoke.open("POST", "https://v2.jokeapi.dev/joke/Any", true);
+	
+	
+	alert("before onreadystatechange");
+	//EVENT HANDLER
+	reqJoke.onreadystatechange = getMyJoke();
+	
+
+	alert("about to send");
+	//SEND
+	reqJoke.send();
+}
+
+//function getMyJoke
+function getMyJoke(){
+	alert("in getmyjoke");
+	if(this.readyState==4  && this.status==200){
+		var data = reqJoke.responseText;
+		alert("just got data");
+		alert(data);
+		var info=JSON.parse(data);
+		alert(info);
+		document.getElementById("jokepart1").innerHTML = info;
+		
+	}
+	else{
+		document.getElementById("jokepart1").innerHTML = "Oops! Something is wrong.";
+	}
+}
+</script>
+
+<!-- BODY - where the joke will be. Calls requestJoke when it loads-->
+<body id = "body" onload="requestJoke()">
+	
+<h1 id="header">Joke API</h1>
+<div id="jokepart1">
+	JOKE HERE
+</div>
+
+
+</body>
+</html>
