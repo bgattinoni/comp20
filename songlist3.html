@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Songlist</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<style type="text/css">
+
+		#body{
+			font-family: "Helvetica";
+			background-color: #ebedf0;
+		}
+
+
+	</style>
+
+
+</head>
+
+
+
+<!-- SCRIPT BEGINS HERE -->
+<script language="javascript">
+
+//getting the raw string
+$(document).ready(function(){
+	
+	for(i = 0; i < 10; i++) {
+		$("#s"+i).hide();
+	}
+	//request
+	var request = new  XMLHttpRequest();
+	
+	//open json
+	request.open("GET", "https://bgattinoni.github.io/comp20/songs.json", true);
+
+	request.onreadystatechange = function(){
+		if(request.readyState==4 && request.status==200){
+			data = request.responseText;
+			info = JSON.parse(data);
+			document.getElementById("str").innerHTML = data;
+		
+		
+		for(i = 0; i < 10; i++) {
+			$("#s" + i).text(info["songs"][i]["title"]);
+		}
+		
+		//form
+		$("[name='button']").click(function(){
+			//all songs are currently showing, so hide songs that 
+			//don't have genre
+			//assign values to Songs
+			for(i = 0; i < 10; i++) {
+				$("#s"+i).hide();
+	        }
+			//loop through  all 10 songs
+			for(i = 0; i < 10; i++){
+				//loop through every genre of each song
+				for(j = 0; j < info["songs"][i]["genre"].length; j++){
+					//hide song if it doesnt match genre
+					if(info["songs"][i]["genre"][j] == document.forms[0].genres.value){
+						$("#s"+i).show();
+					}
+				}
+			}
+		});
+	}
+	}
+	request.send();
+});
+	
+	//make the table
+	$.get("https://bgattinoni.github.io/comp20/songs.json", 
+	
+	function(data){
+		//var info=JSON.parse(data);
+		str = JSON.stringify(data);
+		strHTML="<table>";
+		data["songs"].forEach(function(song){
+			strHTML += "<tr><td>" 
+					+ song.title + "<br>" 
+					+ "Artist: " + song.artist + "<br>"
+					+ "Genre: " + song.genre + "<br>"  
+					+ "Released " + song.year + "<br>" + "<br>" + "</td></tr>";
+		})
+		strHTML += "</table>";
+		document.getElementById("table").innerHTML = strHTML;
+	});
+	
+	
+
+</script>
+
+<body id="body">
+	<h1 class="id">Songlist</h1>
+	
+	<h2 class="id">Part 2: Serialize and Display</h2>
+	<div id="str">
+		String Here.
+	</div>
+	
+	<h2 class="id">Part 3: User Friendly Display</h2>
+	<div id = "table">
+		Table Here.
+	</div>
+	
+	<h2 class="id">Part 4: Filter the Data</h2>
+	<div id = "form">
+	</div>
+	
+	<!-- Form for Filtering -->
+	<form class="id">
+		<select name="genres">
+			<option value="Alternative">Alternative</option>
+			<option value="Folk">Folk</option>
+			<option value="Pop">Pop</option>
+			<option value="Hip Hop">Hip Hop</option>
+			<option value="Rock">Rock</option>
+			<option value="Blue-eyed Soul">Blue-eyed Soul</option>
+			<option value="Neo Soul">Neo Soul</option>
+			<option value="Folk">Folk</option>
+		</select>
+		<input type="button" name="button" value="Filter">
+	</form>
+	
+	<p id="s0"></p>
+    <p id="s1"></p>
+    <p id="s2"></p>
+    <p id="s3"></p>
+    <p id="s4"></p>
+    <p id="s5"></p>
+    <p id="s6"></p>
+    <p id="s7"></p>
+    <p id="s8"></p>
+    <p id="s9"></p>
+	<br><br><br><br>
+	
+</body>
+</html>
