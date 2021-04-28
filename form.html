@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Stock Ticker App</title>
+		<style type="text/css">
+			#header{
+				text-align: center;
+				margin: auto;
+				line-height: 2;
+			}
+			#body{
+				background-color: #fff7dc;
+				text-align: center;
+				font-family: system-ui, sans-serif;
+				font-size: 120%;
+			}
+		</style>
+	</head>
+	<body id = body>
+		<br><br>
+		<h1 id = header>Stock Ticker App</h1>
+		<br>
+		Enter a company name to find its ticker number or enter a ticker number to search for companies.<br><br>
+		<form action="http://localhost:8080/process" method="POST">
+			<div>
+				Company Name<input type="radio" id="company" name="rad" value="name"/>
+				<br>
+				Ticker Number<input type="radio" id="ticker" name="rad" value="ticker"/>
+				<br>
+				<br>
+				<label></label>
+				<input type="text" name="the_name">
+			</div>
+
+			<br>
+			<input type="submit" name="submit" value="Search">
+		</form>
+		<br>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
